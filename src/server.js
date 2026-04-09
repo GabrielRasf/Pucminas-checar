@@ -1,7 +1,7 @@
+const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const inspecaoRoutes = require('./routes'); 
@@ -22,7 +22,6 @@ const swaggerOptions = {
         },
         servers: [{ url: 'http://localhost:3000' }],
     },
-
     apis: [path.resolve(__dirname, 'routes.js')], 
 };
 
