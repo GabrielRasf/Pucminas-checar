@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -31,7 +32,8 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // --- CONEXÃO BANCO DE DADOS ---
-const dbURI = "mongodb+srv://api-checar:CHECARAPI@checar.ww48yhj.mongodb.net/CHECAR?retryWrites=true&w=majority&appName=Checar";
+const dbURI = process.env.MONGODB_URI;
+
 mongoose.connect(dbURI)
     .then(() => console.log("Conectado ao MongoDB Atlas"))
     .catch(err => console.error("Erro ao conectar ao MongoDB Atlas:", err));
